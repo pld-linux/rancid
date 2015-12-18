@@ -11,8 +11,23 @@ Source1:	%{name}.cron
 Source2:	%{name}.logrotate
 Patch0:		%{name}-conf.patch
 Patch1:		%{name}-Makefile.patch
+Patch20:	ftp://ftp.shrubbery.net/pub/rancid/%{name}-3.2.p1.gz
+# Patch20-md5:	aaae4fbc849f02e2f96a9858753407c4
+Patch21:	ftp://ftp.shrubbery.net/pub/rancid/%{name}-3.2.p2.gz
+# Patch21-md5:	bea7fb227ec66a79f34b35b55db27a78
+Patch22:	ftp://ftp.shrubbery.net/pub/rancid/%{name}-3.2.p3.gz
+# Patch22-md5:	29ecf6751dfe0bfc365df4bce6ab7f3c
+Patch23:	ftp://ftp.shrubbery.net/pub/rancid/%{name}-3.2.p4.gz
+# Patch23-md5:	8596ba7d19435d02bbcd71da17c082a2
+Patch24:	ftp://ftp.shrubbery.net/pub/rancid/%{name}-3.2.p5.gz
+# Patch24-md5:	38bd3dc4bae9066d295ff05743f03591
+Patch25:	ftp://ftp.shrubbery.net/pub/rancid/%{name}-3.2.p6.gz
+# Patch25-md5:	386ddc9d51390ed27eb51f57d0b54023
+Patch26:	ftp://ftp.shrubbery.net/pub/rancid/%{name}-3.2.p7.gz
+# Patch26-md5:	5e237785b9f86deb16eb68234a85e60a
 URL:		http://www.shrubbery.net/rancid/
 BuildRequires:	autoconf
+BuildRequires:	patchutils
 BuildRequires:	automake
 BuildRequires:	cvs
 BuildRequires:	expect >= 5.40
@@ -42,6 +57,10 @@ maintain history of changes.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+
+for p in %{P:20} %{P:21} %{P:22} %{P:23} %{P:24} %{P:25} %{P:26}; do
+	%{__gzip} -dc $p | filterdiff -x CHANGES | patch -p0
+done
 
 %build
 %configure \
