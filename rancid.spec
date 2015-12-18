@@ -26,19 +26,11 @@ Patch25:	ftp://ftp.shrubbery.net/pub/rancid/%{name}-3.2.p6.gz
 Patch26:	ftp://ftp.shrubbery.net/pub/rancid/%{name}-3.2.p7.gz
 # Patch26-md5:	5e237785b9f86deb16eb68234a85e60a
 URL:		http://www.shrubbery.net/rancid/
-BuildRequires:	autoconf
+BuildRequires:	coreutils
+BuildRequires:	iputils-ping
 BuildRequires:	patchutils
-BuildRequires:	automake
-BuildRequires:	cvs
-BuildRequires:	expect >= 5.40
-BuildRequires:	iputils
-BuildRequires:	openssh-clients
-BuildRequires:	perl
+BuildRequires:	perl-base
 BuildRequires:	rpm-perlprov >= 4.1-13
-#BuildRequires:	rsh
-#BuildRequires:	sendmail
-BuildRequires:	subversion
-BuildRequires:	telnet
 Requires:	expect >= 5.40
 Requires:	findutils
 Requires:	iputils
@@ -63,6 +55,18 @@ for p in %{P:20} %{P:21} %{P:22} %{P:23} %{P:24} %{P:25} %{P:26}; do
 done
 
 %build
+AUTOMAKE=%{_bindir}/automake \
+CVS=%{_bindir}/cvs \
+EXPECT_PATH=%{_bindir}/expect \
+FIND=%{_bindir}/find \
+GREP=%{_bindir}/grep \
+PERLV_PATH=%{__perl} \
+RSH=%{_bindir}/rsh \
+SENDMAIL=/usr/lib/sendmail \
+SSH=%{_bindir}/ssh \
+SVN=%{_bindir}/svn \
+TAR=%{_bindir}/gtar \
+TELNET=%{_bindir}/telnet \
 %configure \
 	--sysconfdir=%{_sysconfdir}/%{name} \
 	--bindir=%{_libexecdir}/%{name} \
