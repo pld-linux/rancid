@@ -1,0 +1,22 @@
+--- a/etc/rancid.conf.sample.in	2014-05-19 13:52:44.000000000 -0700
++++ b/etc/rancid.conf.sample.in	2014-10-06 20:39:30.935776609 -0700
+@@ -31,8 +31,8 @@
+ TMPDIR=/tmp; export TMPDIR
+ # Be careful changing this, it affects CVSROOT below.  It should be a FQPN, not
+ # relative.
+-BASEDIR=@localstatedir@; export BASEDIR
+-PATH=@bindir@:@ENV_PATH@; export PATH
++BASEDIR=/var/rancid; export BASEDIR
++PATH=@bindir@:/usr/sbin:@ENV_PATH@; export PATH
+ #
+ # Set to the name of the sendmail executable (or script) that will accept the
+ # -t option to take its rcpt and other headers from std-in and $MAILOPTS (see
+@@ -49,7 +49,7 @@
+ #     commands can run, e.g. by running rancid-cvs after installation.
+ CVSROOT=$BASEDIR/CVS; export CVSROOT
+ # Location of log files produced by rancid-run(1).
+-LOGDIR=$BASEDIR/logs; export LOGDIR
++LOGDIR=/var/log/rancid; export LOGDIR
+ #
+ # Select which RCS system to use, "cvs" (default), "svn" or "git".  Do not
+ # change this after CVSROOT has been created with rancid-cvs.  Changing between

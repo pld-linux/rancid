@@ -1,0 +1,11 @@
+--- a/bin/Makefile.in	2014-10-06 20:47:51.219724697 -0700
++++ b/bin/Makefile.in	2014-10-06 20:48:00.763494836 -0700
+@@ -227,7 +227,7 @@
+ #INCLUDES += -I$(top_srcdir)/include
+ 
+ #CFLAGS += -g
+-CFLAGS = -g -O0
++#CFLAGS = -g -O0
+ COMM = @COMM@
+ COPYYEARS = @COPYYEARS@
+ CPP = @CPP@
