@@ -1,7 +1,6 @@
 # TODO (before rel 1)
 # - register user/group
 
-%include	/usr/lib/rpm/macros.perl
 Summary:	Really Awesome New Cisco confIg Differ
 Name:		rancid
 Version:	3.5.0
